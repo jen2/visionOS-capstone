@@ -10,14 +10,43 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
+    @State private var showImmersiveSpace = false
+    @State private var immersiveSpaceIsShown = false
+
+    @Environment(\.openImmersiveSpace) var openImmersiveSpace
+    @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+
     var body: some View {
         VStack {
-            Model3D(named: "Scene", bundle: realityKitContentBundle)
-                .padding(.bottom, 50)
-
-            Text("Hello, world!")
+            VStack (spacing: 12) {
+                Toggle("Show Pumpkin Museum",
+                       isOn: $showImmersiveSpace)
+                    .font(.headline)
+                    .fontWeight(.black)
+                    .foregroundColor(.yellow)
+            }
+            .frame(width: 360)
+            .padding(36)
+            .glassBackgroundEffect()
         }
-        .padding()
+        .onChange(of: showImmersiveSpace) { _, newValue in
+            Task {
+                if newValue {
+                    switch await openImmersiveSpace(id: "ImmersiveSpace") {
+                    case .opened:
+                        immersiveSpaceIsShown = true
+                    case .error, .userCancelled:
+                        fallthrough
+                    @unknown default:
+                        immersiveSpaceIsShown = false
+                        showImmersiveSpace = false
+                    }
+                } else if immersiveSpaceIsShown {
+                    await dismissImmersiveSpace()
+                    immersiveSpaceIsShown = false
+                }
+            }
+        }
     }
 }
 

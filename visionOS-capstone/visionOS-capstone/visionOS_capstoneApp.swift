@@ -12,6 +12,10 @@ struct visionOS_capstoneApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+        }.windowStyle(.volumetric)
+
+        ImmersiveSpace(id: "ImmersiveSpace") {
+            ImmersiveView()
         }
     }
 }

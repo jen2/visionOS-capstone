@@ -12,6 +12,8 @@
 		702950262C1CDD9E0091BBC5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702950252C1CDD9E0091BBC5 /* ContentView.swift */; };
 		702950282C1CDDA00091BBC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 702950272C1CDDA00091BBC5 /* Assets.xcassets */; };
 		7029502B2C1CDDA00091BBC5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7029502A2C1CDDA00091BBC5 /* Preview Assets.xcassets */; };
+		702950332C1CE2750091BBC5 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702950322C1CE2750091BBC5 /* ImmersiveView.swift */; };
+		702950362C1CEDCB0091BBC5 /* sunlight.skybox in Resources */ = {isa = PBXBuildFile; fileRef = 702950352C1CEDCB0091BBC5 /* sunlight.skybox */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		702950272C1CDDA00091BBC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7029502A2C1CDDA00091BBC5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7029502C2C1CDDA00091BBC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		702950322C1CE2750091BBC5 /* ImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
+		702950352C1CEDCB0091BBC5 /* sunlight.skybox */ = {isa = PBXFileReference; lastKnownFileType = file.skybox; path = sunlight.skybox; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 			children = (
 				702950232C1CDD9E0091BBC5 /* visionOS_capstoneApp.swift */,
 				702950252C1CDD9E0091BBC5 /* ContentView.swift */,
+				702950322C1CE2750091BBC5 /* ImmersiveView.swift */,
+				702950342C1CEDA20091BBC5 /* Resources */,
 				702950272C1CDDA00091BBC5 /* Assets.xcassets */,
 				7029502C2C1CDDA00091BBC5 /* Info.plist */,
 				702950292C1CDDA00091BBC5 /* Preview Content */,
@@ -79,6 +85,14 @@
 				7029502A2C1CDDA00091BBC5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		702950342C1CEDA20091BBC5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				702950352C1CEDCB0091BBC5 /* sunlight.skybox */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7029502B2C1CDDA00091BBC5 /* Preview Assets.xcassets in Resources */,
+				702950362C1CEDCB0091BBC5 /* sunlight.skybox in Resources */,
 				702950282C1CDDA00091BBC5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,6 +171,7 @@
 			files = (
 				702950262C1CDD9E0091BBC5 /* ContentView.swift in Sources */,
 				702950242C1CDD9E0091BBC5 /* visionOS_capstoneApp.swift in Sources */,
+				702950332C1CE2750091BBC5 /* ImmersiveView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
