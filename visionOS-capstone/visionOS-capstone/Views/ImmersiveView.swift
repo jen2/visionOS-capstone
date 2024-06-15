@@ -13,7 +13,7 @@ struct ImmersiveView: View {
     @State private var ghostEntity: Entity?
 
     var body: some View {
-        RealityView { content in
+        RealityView { content, attachments in
             // Initial RealityKit content
             if let scene = try? await Entity(named: Constants.immersiveViewEntityName, in: realityKitContentBundle) {
                 content.add(scene)
@@ -24,7 +24,7 @@ struct ImmersiveView: View {
                 scene.components.set(iblComponent)
                 scene.components.set(ImageBasedLightReceiverComponent(imageBasedLight: scene))
 
-                // Occuled floor
+                // Occluded floor
                 let floor = ModelEntity(
                     mesh: .generatePlane(
                         width: 100,
@@ -39,13 +39,15 @@ struct ImmersiveView: View {
                 )
                 content.add(floor)
 
-                // Ghost position
-//                if let ghostEntity = content.entities.first?.findEntity(named: Constants.ghostEntityName) {
-//                    // Set initial x position
-//                    ghostXPosition = scene.position.x
-//                }
+                // Attachments
+                if let pedestal = content.entities.first?.findEntity(named: "pedestal_1") {
+                    if let pumpkinAttachment = attachments.entity(for: "pedestal-1-attach") {
+                        pumpkinAttachment.position = [0.05, 0.25, 0.11]
+                        pedestal.addChild(pumpkinAttachment)
+                    }
+                }
             }
-        } update: { content in
+        } update: { content, attachments in
             // Ghost animation
             if let ghostEntity = content.entities.first?.findEntity(named: Constants.ghostEntityName) {
 
@@ -64,29 +66,19 @@ struct ImmersiveView: View {
                     ghostEntity.playAnimation(animation)
                 }
             }
+        } attachments: {
+            Attachment(id: "pedestal-1-attach") {
+                VStack {
+                    Text("\"Baby Boo\" Pumpkin")
+                        .font(.largeTitle)
+                    Text("These ghostly white beauties are known for their long and distinct handles, typically a warm shade of green, along with their bright-white hue and excellent shape. This pumpkin is perfect for creating a decorative seasonal display with contrasting color.")
+                        .font(.title)
+                }
+                .padding(.all, 20)
+                .frame(maxWidth: 300, maxHeight: 500)
+                .glassBackgroundEffect()
+            }
         }
-//        .task {
-//            var goingUp = true
-//            //While the View is alive
-//            while true {
-//                print(ghostXPosition)
-//                //Every second
-//                try? await Task.sleep(for: .seconds(1))
-//                //Move by 0.1 x
-//                if goingUp {
-//                    ghostXPosition += 0.1
-//                } else {
-//                    ghostXPosition -= 0.1
-//                }
-//                //Left/Right
-//                if ghostXPosition >= 0.5 {
-//                    goingUp = false
-//                } else if ghostXPosition <= -0.5 {
-//                    goingUp = true
-//                }
-//            }
-//        }
-
     }
 }
 
