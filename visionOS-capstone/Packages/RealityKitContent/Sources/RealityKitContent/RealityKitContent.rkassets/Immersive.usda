@@ -62,6 +62,13 @@ def Xform "Root"
             bool isEnabled = 1
             string label = "Large bumpy light orange pumpkin with a straight brown stem."
         }
+
+        def RealityKitComponent "GroundingShadow"
+        {
+            bool enableIBLShadow = 1
+            bool enableMeshShadow = 1
+            uniform token info:id = "RealityKit.GroundingShadow"
+        }
     }
 
     def "big_orange_pumpkin" (
@@ -71,7 +78,7 @@ def Xform "Root"
     {
         reorder nameChildren = ["Materials", "Geometry"]
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (1.3, 1.3, -3)
+        float3 xformOp:translate = (1.28, 1.3, -2.98)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "Collider"
@@ -114,6 +121,13 @@ def Xform "Root"
             uniform token info:id = "RealityKit.Accessibility"
             bool isEnabled = 1
             string label = "Stout deep orange colored pumpkin with a short brown stem."
+        }
+
+        def RealityKitComponent "GroundingShadow"
+        {
+            bool enableIBLShadow = 1
+            bool enableMeshShadow = 1
+            uniform token info:id = "RealityKit.GroundingShadow"
         }
     }
 
@@ -166,6 +180,13 @@ def Xform "Root"
             uniform token info:id = "RealityKit.Accessibility"
             bool isEnabled = 1
             string label = "Small round pumkin with black color and a short thin stem."
+        }
+
+        def RealityKitComponent "GroundingShadow"
+        {
+            bool enableIBLShadow = 1
+            bool enableMeshShadow = 1
+            uniform token info:id = "RealityKit.GroundingShadow"
         }
     }
 
@@ -226,6 +247,13 @@ def Xform "Root"
             bool isEnabled = 1
             string label = "Small orange pumpkin with a tall stem bent to one side."
         }
+
+        def RealityKitComponent "GroundingShadow"
+        {
+            bool enableIBLShadow = 1
+            bool enableMeshShadow = 1
+            uniform token info:id = "RealityKit.GroundingShadow"
+        }
     }
 
     def "small_white_pumpkin" (
@@ -277,6 +305,13 @@ def Xform "Root"
             uniform token info:id = "RealityKit.Accessibility"
             bool isEnabled = 1
             string label = "Tiny white pumpkin with a short stem."
+        }
+
+        def RealityKitComponent "GroundingShadow"
+        {
+            bool enableIBLShadow = 1
+            bool enableMeshShadow = 1
+            uniform token info:id = "RealityKit.GroundingShadow"
         }
     }
 
@@ -330,6 +365,13 @@ def Xform "Root"
             bool isEnabled = 1
             string label = "Bumpy white and green gourd with a goose-neck shape and tiny stem."
         }
+
+        def RealityKitComponent "GroundingShadow"
+        {
+            bool enableIBLShadow = 1
+            bool enableMeshShadow = 1
+            uniform token info:id = "RealityKit.GroundingShadow"
+        }
     }
 
     def "blue_wonky_pumpkin" (
@@ -338,7 +380,7 @@ def Xform "Root"
     )
     {
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0, 1.3, -3)
+        float3 xformOp:translate = (0, 1.3, -2.95)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "Collider"
@@ -381,6 +423,13 @@ def Xform "Root"
             uniform token info:id = "RealityKit.Accessibility"
             bool isEnabled = 1
             string label = "Wavy shaped light green pumkin with a short stem."
+        }
+
+        def RealityKitComponent "GroundingShadow"
+        {
+            bool enableIBLShadow = 1
+            bool enableMeshShadow = 1
+            uniform token info:id = "RealityKit.GroundingShadow"
         }
     }
 
