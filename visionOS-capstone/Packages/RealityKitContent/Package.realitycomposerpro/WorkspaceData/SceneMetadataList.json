@@ -72,6 +72,34 @@
     "objectMetadataList" : [
       [
         "E362E4EA-7D41-476B-B867-28D6B10BD0E5",
+        "Root",
+        "black_pumpkin"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E362E4EA-7D41-476B-B867-28D6B10BD0E5",
+        "Root",
+        "blue_wonky_pumpkin"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E362E4EA-7D41-476B-B867-28D6B10BD0E5",
+        "Root",
+        "blue_wonky_pumpkin",
+        "Geometry"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E362E4EA-7D41-476B-B867-28D6B10BD0E5",
         "Root"
       ],
       {

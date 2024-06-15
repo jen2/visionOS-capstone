@@ -38,29 +38,55 @@ struct ImmersiveView: View {
                     mode: .static
                 )
                 content.add(floor)
+
+                // Ghost position
+//                if let ghostEntity = content.entities.first?.findEntity(named: Constants.ghostEntityName) {
+//                    // Set initial x position
+//                    ghostXPosition = scene.position.x
+//                }
             }
         } update: { content in
             // Ghost animation
             if let ghostEntity = content.entities.first?.findEntity(named: Constants.ghostEntityName) {
 
-                ghostEntity.orientation = simd_quatf(angle: Float.pi/4, axis: [0.0, 0.0, 0.0])
-
                 var transform = ghostEntity.transform
-                transform.translation = SIMD3<Float>(x: 0.05, y: 1.5, z: -0.05)
-                ghostEntity.position.z = -400
-                    let orbit = OrbitAnimation(duration: 3.0,
-                                               axis: SIMD3<Float>(x: 0.0, y: 1.0, z: 0.0),
-                                               startTransform: transform,
-                                               spinClockwise: false,
-                                               orientToPath: false,
-                                               rotationCount: 1.0,
-                                               bindTarget: .transform,
-                                               repeatMode: .repeat)
-                    if let animation = try? AnimationResource.generate(with: orbit) {
-                        ghostEntity.playAnimation(animation)
-                    }
+                transform.translation = SIMD3<Float>(x: 0.05, y: 0.5, z: -0.05)
+
+                let orbit = OrbitAnimation(duration: 3.0,
+                                           axis: SIMD3<Float>(x: 0.0, y: 1.0, z: 0.0),
+                                           startTransform: transform,
+                                           spinClockwise: false,
+                                           orientToPath: false,
+                                           rotationCount: 1.0,
+                                           bindTarget: .transform,
+                                           repeatMode: .repeat)
+                if let animation = try? AnimationResource.generate(with: orbit) {
+                    ghostEntity.playAnimation(animation)
                 }
+            }
         }
+//        .task {
+//            var goingUp = true
+//            //While the View is alive
+//            while true {
+//                print(ghostXPosition)
+//                //Every second
+//                try? await Task.sleep(for: .seconds(1))
+//                //Move by 0.1 x
+//                if goingUp {
+//                    ghostXPosition += 0.1
+//                } else {
+//                    ghostXPosition -= 0.1
+//                }
+//                //Left/Right
+//                if ghostXPosition >= 0.5 {
+//                    goingUp = false
+//                } else if ghostXPosition <= -0.5 {
+//                    goingUp = true
+//                }
+//            }
+//        }
+
     }
 }
 
