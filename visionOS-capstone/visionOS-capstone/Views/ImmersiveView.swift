@@ -39,35 +39,18 @@ struct ImmersiveView: View {
                 )
                 content.add(floor)
 
-                // Attachments
-                if let pedestal = content.entities.first?.findEntity(named: "pedestal_1") {
-                    if let pumpkinAttachment = attachments.entity(for: "pedestal-1-attach") {
-                        pumpkinAttachment.position = [0.05, 0.25, 0.11]
-                        pedestal.addChild(pumpkinAttachment)
-                    }
-                }
+                // Add Attachments
+                addAttachment(with: content,
+                              attachments: attachments,
+                              entityName: "pedestal_1")
             }
         } update: { content, attachments in
             // Ghost animation
             if let ghostEntity = content.entities.first?.findEntity(named: Constants.ghostEntityName) {
-
-                var transform = ghostEntity.transform
-                transform.translation = SIMD3<Float>(x: 0.05, y: 0.5, z: -0.05)
-
-                let orbit = OrbitAnimation(duration: 3.0,
-                                           axis: SIMD3<Float>(x: 0.0, y: 1.0, z: 0.0),
-                                           startTransform: transform,
-                                           spinClockwise: false,
-                                           orientToPath: false,
-                                           rotationCount: 1.0,
-                                           bindTarget: .transform,
-                                           repeatMode: .repeat)
-                if let animation = try? AnimationResource.generate(with: orbit) {
-                    ghostEntity.playAnimation(animation)
-                }
+                animateGhost(with: ghostEntity)
             }
         } attachments: {
-            Attachment(id: "pedestal-1-attach") {
+            Attachment(id: "pedestal_1_attach") {
                 VStack {
                     Text("\"Baby Boo\" Pumpkin")
                         .font(.largeTitle)
@@ -88,6 +71,34 @@ extension ImmersiveView {
         static let immersiveViewEntityName = "Immersive"
         static let ghostEntityName = "cute_ghost"
         static let sunlightResourceName = "Sunlight"
+    }
+
+    private func animateGhost(with ghostEntity: Entity) {
+        var transform = ghostEntity.transform
+        transform.translation = SIMD3<Float>(x: 0.05, y: 0.5, z: -0.05)
+
+        let orbit = OrbitAnimation(duration: 3.0,
+                                   axis: SIMD3<Float>(x: 0.0, y: 1.0, z: 0.0),
+                                   startTransform: transform,
+                                   spinClockwise: false,
+                                   orientToPath: false,
+                                   rotationCount: 1.0,
+                                   bindTarget: .transform,
+                                   repeatMode: .repeat)
+        if let animation = try? AnimationResource.generate(with: orbit) {
+            ghostEntity.playAnimation(animation)
+        }
+    }
+
+    private func addAttachment(with content: RealityViewContent,
+                               attachments: RealityViewAttachments,
+                               entityName: String) {
+        if let pedestal = content.entities.first?.findEntity(named: entityName) {
+            if let pumpkinAttachment = attachments.entity(for: "\(entityName)_attach") {
+                pumpkinAttachment.position = [0.05, 0.25, 0.11]
+                pedestal.addChild(pumpkinAttachment)
+            }
+        }
     }
 }
 
