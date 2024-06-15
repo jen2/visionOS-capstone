@@ -43,6 +43,9 @@ struct ImmersiveView: View {
                 addAttachment(with: content,
                               attachments: attachments,
                               entityName: "pedestal_1")
+                addAttachment(with: content,
+                              attachments: attachments,
+                              entityName: "pedestal_2")
             }
         } update: { content, attachments in
             // Ghost animation
@@ -55,6 +58,18 @@ struct ImmersiveView: View {
                     Text("\"Baby Boo\" Pumpkin")
                         .font(.largeTitle)
                     Text("These ghostly white beauties are known for their long and distinct handles, typically a warm shade of green, along with their bright-white hue and excellent shape. This pumpkin is perfect for creating a decorative seasonal display with contrasting color.")
+                        .font(.title)
+                }
+                .padding(.all, 20)
+                .frame(maxWidth: 300, maxHeight: 500)
+                .glassBackgroundEffect()
+            }
+
+            Attachment(id: "pedestal_2_attach") {
+                VStack {
+                    Text("Gooseneck Gourd")
+                        .font(.largeTitle)
+                    Text("Native to northern Mexico and eastern North America, yellow-flowered gourds have been cultivated for a very long time. These gourds are primarily used as ornamentals. Many of the smaller fruits are naturally striped creating various shades of green and yellow.")
                         .font(.title)
                 }
                 .padding(.all, 20)
