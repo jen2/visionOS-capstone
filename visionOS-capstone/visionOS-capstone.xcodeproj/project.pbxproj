@@ -61,8 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				702950232C1CDD9E0091BBC5 /* visionOS_capstoneApp.swift */,
-				702950252C1CDD9E0091BBC5 /* ContentView.swift */,
-				702950322C1CE2750091BBC5 /* ImmersiveView.swift */,
+				702950392C1DD0B20091BBC5 /* Views */,
 				702950342C1CEDA20091BBC5 /* Resources */,
 				702950272C1CDDA00091BBC5 /* Assets.xcassets */,
 				7029502C2C1CDDA00091BBC5 /* Info.plist */,
@@ -93,6 +92,15 @@
 				702950352C1CEDCB0091BBC5 /* sunlight.skybox */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		702950392C1DD0B20091BBC5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				702950252C1CDD9E0091BBC5 /* ContentView.swift */,
+				702950322C1CE2750091BBC5 /* ImmersiveView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

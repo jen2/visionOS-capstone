@@ -55,6 +55,13 @@ def Xform "Root"
             {
             }
         }
+
+        def RealityKitComponent "Accessibility"
+        {
+            uniform token info:id = "RealityKit.Accessibility"
+            bool isEnabled = 1
+            string label = "Large bumpy light orange pumpkin with a straight brown stem."
+        }
     }
 
     def "big_orange_pumpkin" (
@@ -101,6 +108,13 @@ def Xform "Root"
             {
             }
         }
+
+        def RealityKitComponent "Accessibility"
+        {
+            uniform token info:id = "RealityKit.Accessibility"
+            bool isEnabled = 1
+            string label = "Stout deep orange colored pumpkin with a short brown stem."
+        }
     }
 
     def "black_pumpkin" (
@@ -145,6 +159,13 @@ def Xform "Root"
             def RealityKitStruct "material"
             {
             }
+        }
+
+        def RealityKitComponent "Accessibility"
+        {
+            uniform token info:id = "RealityKit.Accessibility"
+            bool isEnabled = 1
+            string label = "Small round pumkin with black color and a short thin stem."
         }
     }
 
@@ -198,6 +219,13 @@ def Xform "Root"
             {
             }
         }
+
+        def RealityKitComponent "Accessibility"
+        {
+            uniform token info:id = "RealityKit.Accessibility"
+            bool isEnabled = 1
+            string label = "Small orange pumpkin with a tall stem bent to one side."
+        }
     }
 
     def "small_white_pumpkin" (
@@ -242,6 +270,13 @@ def Xform "Root"
             def RealityKitStruct "material"
             {
             }
+        }
+
+        def RealityKitComponent "Accessibility"
+        {
+            uniform token info:id = "RealityKit.Accessibility"
+            bool isEnabled = 1
+            string label = "Tiny white pumpkin with a short stem."
         }
     }
 
@@ -288,6 +323,13 @@ def Xform "Root"
             {
             }
         }
+
+        def RealityKitComponent "Accessibility"
+        {
+            uniform token info:id = "RealityKit.Accessibility"
+            bool isEnabled = 1
+            string label = "Bumpy white and green gourd with a goose-neck shape and tiny stem."
+        }
     }
 
     def "blue_wonky_pumpkin" (
@@ -332,6 +374,13 @@ def Xform "Root"
             def RealityKitStruct "material"
             {
             }
+        }
+
+        def RealityKitComponent "Accessibility"
+        {
+            uniform token info:id = "RealityKit.Accessibility"
+            bool isEnabled = 1
+            string label = "Wavy shaped light green pumkin with a short stem."
         }
     }
 
@@ -962,7 +1011,7 @@ def Xform "Root"
     )
     {
         float3 xformOp:scale = (0.004, 0.004, 0.004)
-        float3 xformOp:translate = (0, 2, -3)
+        float3 xformOp:translate = (0, 2, -4)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }

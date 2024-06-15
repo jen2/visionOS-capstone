@@ -15,11 +15,11 @@ struct ImmersiveView: View {
     var body: some View {
         RealityView { content in
             // Initial RealityKit content
-            if let scene = try? await Entity(named: "Immersive", in: realityKitContentBundle) {
+            if let scene = try? await Entity(named: Constants.immersiveViewEntityName, in: realityKitContentBundle) {
                 content.add(scene)
 
                 // Sunlight
-                guard let resource = try? await EnvironmentResource(named: "Sunlight") else { return }
+                guard let resource = try? await EnvironmentResource(named: Constants.sunlightResourceName) else { return }
                 let iblComponent = ImageBasedLightComponent(source: .single(resource), intensityExponent: 3.5)
                 scene.components.set(iblComponent)
                 scene.components.set(ImageBasedLightReceiverComponent(imageBasedLight: scene))
@@ -41,17 +41,18 @@ struct ImmersiveView: View {
             }
         } update: { content in
             // Ghost animation
-            if let ghostEntity = content.entities.first?.findEntity(named: "cute_ghost") {
+            if let ghostEntity = content.entities.first?.findEntity(named: Constants.ghostEntityName) {
+
                 ghostEntity.orientation = simd_quatf(angle: Float.pi/4, axis: [0.0, 0.0, 0.0])
 
                 var transform = ghostEntity.transform
-                transform.translation = SIMD3<Float>(x: 0.1, y: 2.0, z: -0.25)
-
-                    let orbit = OrbitAnimation(duration: 20.0,
+                transform.translation = SIMD3<Float>(x: 0.05, y: 1.5, z: -0.05)
+                ghostEntity.position.z = -400
+                    let orbit = OrbitAnimation(duration: 3.0,
                                                axis: SIMD3<Float>(x: 0.0, y: 1.0, z: 0.0),
                                                startTransform: transform,
                                                spinClockwise: false,
-                                               orientToPath: true,
+                                               orientToPath: false,
                                                rotationCount: 1.0,
                                                bindTarget: .transform,
                                                repeatMode: .repeat)
@@ -60,6 +61,15 @@ struct ImmersiveView: View {
                     }
                 }
         }
+    }
+}
+
+// MARK: - Private
+extension ImmersiveView {
+    private enum Constants {
+        static let immersiveViewEntityName = "Immersive"
+        static let ghostEntityName = "cute_ghost"
+        static let sunlightResourceName = "Sunlight"
     }
 }
 
