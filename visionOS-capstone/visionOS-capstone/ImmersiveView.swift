@@ -38,11 +38,27 @@ struct ImmersiveView: View {
                     mode: .static
                 )
                 content.add(floor)
-
-                // Ghost
-                ghostEntity = content.entities.first?.findEntity(named: "cute-ghost")
-
             }
+        } update: { content in
+            // Ghost animation
+            if let ghostEntity = content.entities.first?.findEntity(named: "cute_ghost") {
+                ghostEntity.orientation = simd_quatf(angle: Float.pi/4, axis: [0.0, 0.0, 0.0])
+
+                var transform = ghostEntity.transform
+                transform.translation = SIMD3<Float>(x: 0.1, y: 2.0, z: -0.25)
+
+                    let orbit = OrbitAnimation(duration: 20.0,
+                                               axis: SIMD3<Float>(x: 0.0, y: 1.0, z: 0.0),
+                                               startTransform: transform,
+                                               spinClockwise: false,
+                                               orientToPath: true,
+                                               rotationCount: 1.0,
+                                               bindTarget: .transform,
+                                               repeatMode: .repeat)
+                    if let animation = try? AnimationResource.generate(with: orbit) {
+                        ghostEntity.playAnimation(animation)
+                    }
+                }
         }
     }
 }
