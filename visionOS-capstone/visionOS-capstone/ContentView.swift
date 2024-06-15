@@ -19,7 +19,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             VStack (spacing: 12) {
-                Toggle("Show Pumpkin Museum",
+                Toggle("Show Pumpkin Gallery",
                        isOn: $showImmersiveSpace)
                     .font(.headline)
                     .fontWeight(.black)
