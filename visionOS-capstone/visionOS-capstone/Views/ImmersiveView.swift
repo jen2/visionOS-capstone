@@ -49,27 +49,12 @@ struct ImmersiveView: View {
                 content.add(floor)
 
                 // Add Attachments
-                addAttachment(with: content,
-                              attachments: attachments,
-                              entityName: "pedestal_1")
-                addAttachment(with: content,
-                              attachments: attachments,
-                              entityName: "pedestal_2")
-                addAttachment(with: content,
-                              attachments: attachments,
-                              entityName: "pedestal_3")
-                addAttachment(with: content,
-                              attachments: attachments,
-                              entityName: "pedestal_4")
-                addAttachment(with: content,
-                              attachments: attachments,
-                              entityName: "pedestal_5")
-                addAttachment(with: content,
-                              attachments: attachments,
-                              entityName: "pedestal_6")
-                addAttachment(with: content,
-                              attachments: attachments,
-                              entityName: "pedestal_7")
+                let pumpkins = PumpkinFactory.pumpkins
+                for pumpkin in pumpkins {
+                    addAttachment(with: content,
+                                  attachments: attachments,
+                                  entityName: "pedestal_\(pumpkin.pedestalNumber)")
+                }
             }
         } update: { content, attachments in
             // Ghost animation
@@ -77,11 +62,12 @@ struct ImmersiveView: View {
                 animateGhost(with: ghostEntity)
             }
         } attachments: {
-            Attachment(id: "pedestal_1_attach") {
+            let pumpkins = PumpkinFactory.pumpkins
+            Attachment(id: "pedestal_\(pumpkins[0].pedestalNumber)_attach") {
                 VStack {
-                    Text("\"Baby Boo\" Pumpkin")
+                    Text(pumpkins[0].name)
                         .font(.largeTitle)
-                    Text("These ghostly white beauties are known for their long and distinct handles, typically a warm shade of green, along with their bright-white hue and excellent shape. This pumpkin is perfect for creating a decorative seasonal display with contrasting color.")
+                    Text(pumpkins[0].description)
                         .font(.title)
                 }
                 .padding(.all, 20)
@@ -89,11 +75,11 @@ struct ImmersiveView: View {
                 .glassBackgroundEffect()
             }
 
-            Attachment(id: "pedestal_2_attach") {
+            Attachment(id: "pedestal_\(pumpkins[1].pedestalNumber)_attach") {
                 VStack {
-                    Text("Gooseneck Gourd")
+                    Text(pumpkins[1].name)
                         .font(.largeTitle)
-                    Text("Native to northern Mexico and eastern North America, yellow-flowered gourds have been cultivated for a very long time. These gourds are primarily used as ornamentals. Many of the smaller fruits are naturally striped creating various shades of green and yellow.")
+                    Text(pumpkins[1].description)
                         .font(.title)
                 }
                 .padding(.all, 20)
@@ -101,11 +87,11 @@ struct ImmersiveView: View {
                 .glassBackgroundEffect()
             }
 
-            Attachment(id: "pedestal_3_attach") {
+            Attachment(id: "pedestal_\(pumpkins[2].pedestalNumber)_attach") {
                 VStack {
-                    Text("Black Kat Pumpkins")
+                    Text(pumpkins[2].name)
                         .font(.largeTitle)
-                    Text("Black Kat pumpkins, also known as Midnight pumpkins, are dark green, classic-shaped pumpkins with deep ridges that are both edible and ornamental. They are produced by semi-bush plants and can weigh between 8 oz & 1 lb. The flesh is pale orange and sweet, making them ideal for pumpkin pie.")
+                    Text(pumpkins[2].description)
                         .font(.title)
                 }
                 .padding(.all, 20)
@@ -113,11 +99,11 @@ struct ImmersiveView: View {
                 .glassBackgroundEffect()
             }
 
-            Attachment(id: "pedestal_4_attach") {
+            Attachment(id: "pedestal_\(pumpkins[3].pedestalNumber)_attach") {
                 VStack {
-                    Text("\"Jack-Be-Little\" Pumpkins")
+                    Text(pumpkins[3].name)
                         .font(.largeTitle)
-                    Text("Jack-Be-Little pumpkins are small, deep orange, and ribbed pumpkins that are easy to grow and can be used for decoration or eaten. They are a variety of Cucurbita pepo, which also includes summer squashes and small gourds.")
+                    Text(pumpkins[3].description)
                         .font(.title)
                 }
                 .padding(.all, 20)
@@ -125,11 +111,11 @@ struct ImmersiveView: View {
                 .glassBackgroundEffect()
             }
 
-            Attachment(id: "pedestal_5_attach") {
+            Attachment(id: "pedestal_\(pumpkins[4].pedestalNumber)_attach") {
                 VStack {
-                    Text("Kabocha Squash")
+                    Text(pumpkins[4].name)
                         .font(.largeTitle)
-                    Text("Kabocha squash is a winter squash that originated in the Americas. It's a fruit that grows on bushes but is often eaten as a vegetable. Kabocha squash is usually round or oblate in shape, with a hard rind that can be dark green, gray, or reddish-orange, and yellow to orange flesh. Kabocha squash is often used in Japanese, Korean, and other cuisine.")
+                    Text(pumpkins[4].description)
                         .font(.title)
                 }
                 .padding(.all, 20)
@@ -137,11 +123,11 @@ struct ImmersiveView: View {
                 .glassBackgroundEffect()
             }
 
-            Attachment(id: "pedestal_6_attach") {
+            Attachment(id: "pedestal_\(pumpkins[5].pedestalNumber)_attach") {
                 VStack {
-                    Text("\"Knucklehead\" Pumpkins")
+                    Text(pumpkins[5].name)
                         .font(.largeTitle)
-                    Text("Orange pumpkins with pimples, also known as warty pumpkins or knuckleheads, are a hybrid variety of pumpkin that can be bumpy and grotesque in appearance. The warts are caused by the pumpkin's high sugar content, which can crack the skin and lead to wart development.")
+                    Text(pumpkins[5].description)
                         .font(.title)
                 }
                 .padding(.all, 20)
@@ -149,11 +135,11 @@ struct ImmersiveView: View {
                 .glassBackgroundEffect()
             }
 
-            Attachment(id: "pedestal_7_attach") {
+            Attachment(id: "pedestal_\(pumpkins[6].pedestalNumber)_attach") {
                 VStack {
-                    Text("\"Blue Doll\" Pumpkins")
+                    Text(pumpkins[6].name)
                         .font(.largeTitle)
-                    Text("Deeply ribbed, slightly flattened fruits are somewhat bumpy and hard-shelled with a cool greenish-blue gray color that is certain to add interest to fall displays. They weigh 20 to 24 pounds with sweet, deep-orange flesh that is fantastic for both cooking and baking.")
+                    Text(pumpkins[6].description)
                         .font(.title)
                 }
                 .padding(.all, 20)

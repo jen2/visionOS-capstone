@@ -14,6 +14,7 @@
 		7029502B2C1CDDA00091BBC5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7029502A2C1CDDA00091BBC5 /* Preview Assets.xcassets */; };
 		702950332C1CE2750091BBC5 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702950322C1CE2750091BBC5 /* ImmersiveView.swift */; };
 		702950362C1CEDCB0091BBC5 /* sunlight.skybox in Resources */ = {isa = PBXBuildFile; fileRef = 702950352C1CEDCB0091BBC5 /* sunlight.skybox */; };
+		70CCAB722C1F8C8200B7132B /* PumpkinFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CCAB712C1F8C8200B7132B /* PumpkinFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7029502C2C1CDDA00091BBC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		702950322C1CE2750091BBC5 /* ImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
 		702950352C1CEDCB0091BBC5 /* sunlight.skybox */ = {isa = PBXFileReference; lastKnownFileType = file.skybox; path = sunlight.skybox; sourceTree = "<group>"; };
+		70CCAB712C1F8C8200B7132B /* PumpkinFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpkinFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				702950232C1CDD9E0091BBC5 /* visionOS_capstoneApp.swift */,
 				702950392C1DD0B20091BBC5 /* Views */,
+				70CCAB702C1F8C6300B7132B /* Models */,
 				702950342C1CEDA20091BBC5 /* Resources */,
 				702950272C1CDDA00091BBC5 /* Assets.xcassets */,
 				7029502C2C1CDDA00091BBC5 /* Info.plist */,
@@ -101,6 +104,14 @@
 				702950322C1CE2750091BBC5 /* ImmersiveView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		70CCAB702C1F8C6300B7132B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				70CCAB712C1F8C8200B7132B /* PumpkinFactory.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70CCAB722C1F8C8200B7132B /* PumpkinFactory.swift in Sources */,
 				702950262C1CDD9E0091BBC5 /* ContentView.swift in Sources */,
 				702950242C1CDD9E0091BBC5 /* visionOS_capstoneApp.swift in Sources */,
 				702950332C1CE2750091BBC5 /* ImmersiveView.swift in Sources */,
