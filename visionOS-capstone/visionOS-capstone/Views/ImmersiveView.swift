@@ -70,8 +70,8 @@ struct ImmersiveView: View {
                     Text(pumpkins[0].description)
                         .font(.title)
                 }
-                .padding(.all, 20)
-                .frame(maxWidth: 300, maxHeight: 500)
+                .padding(.all, Dimensions.attachmentPadding)
+                .frame(maxWidth: Dimensions.attachmentMaxWidth, maxHeight: Dimensions.attachmentMaxHeight)
                 .glassBackgroundEffect()
             }
 
@@ -82,8 +82,8 @@ struct ImmersiveView: View {
                     Text(pumpkins[1].description)
                         .font(.title)
                 }
-                .padding(.all, 20)
-                .frame(maxWidth: 300, maxHeight: 500)
+                .padding(.all, Dimensions.attachmentPadding)
+                .frame(maxWidth: Dimensions.attachmentMaxWidth, maxHeight: Dimensions.attachmentMaxHeight)
                 .glassBackgroundEffect()
             }
 
@@ -94,8 +94,8 @@ struct ImmersiveView: View {
                     Text(pumpkins[2].description)
                         .font(.title)
                 }
-                .padding(.all, 20)
-                .frame(maxWidth: 300, maxHeight: 500)
+                .padding(.all, Dimensions.attachmentPadding)
+                .frame(maxWidth: Dimensions.attachmentMaxWidth, maxHeight: Dimensions.attachmentMaxHeight)
                 .glassBackgroundEffect()
             }
 
@@ -106,8 +106,8 @@ struct ImmersiveView: View {
                     Text(pumpkins[3].description)
                         .font(.title)
                 }
-                .padding(.all, 20)
-                .frame(maxWidth: 300, maxHeight: 500)
+                .padding(.all, Dimensions.attachmentPadding)
+                .frame(maxWidth: Dimensions.attachmentMaxWidth, maxHeight: Dimensions.attachmentMaxHeight)
                 .glassBackgroundEffect()
             }
 
@@ -118,8 +118,8 @@ struct ImmersiveView: View {
                     Text(pumpkins[4].description)
                         .font(.title)
                 }
-                .padding(.all, 20)
-                .frame(maxWidth: 300, maxHeight: 500)
+                .padding(.all, Dimensions.attachmentPadding)
+                .frame(maxWidth: Dimensions.attachmentMaxWidth, maxHeight: Dimensions.attachmentMaxHeight)
                 .glassBackgroundEffect()
             }
 
@@ -130,8 +130,8 @@ struct ImmersiveView: View {
                     Text(pumpkins[5].description)
                         .font(.title)
                 }
-                .padding(.all, 20)
-                .frame(maxWidth: 300, maxHeight: 500)
+                .padding(.all, Dimensions.attachmentPadding)
+                .frame(maxWidth: Dimensions.attachmentMaxWidth, maxHeight: Dimensions.attachmentMaxHeight)
                 .glassBackgroundEffect()
             }
 
@@ -142,8 +142,8 @@ struct ImmersiveView: View {
                     Text(pumpkins[6].description)
                         .font(.title)
                 }
-                .padding(.all, 20)
-                .frame(maxWidth: 300, maxHeight: 500)
+                .padding(.all, Dimensions.attachmentPadding)
+                .frame(maxWidth: Dimensions.attachmentMaxWidth, maxHeight: Dimensions.attachmentMaxHeight)
                 .glassBackgroundEffect()
             }
         }
@@ -162,6 +162,13 @@ extension ImmersiveView {
 
     private enum Dimensions {
         static let floorSize: Float = 100.0
+        static let attachmentPadding: CGFloat = 20
+        static let attachmentMaxWidth: CGFloat = 300
+        static let attachmentMaxHeight: CGFloat = 500
+    }
+
+    private enum Positions {
+        static let attachmentPosition: SIMD3<Float> = [0.05, 0.25, 0.11]
     }
 
     // MARK: Helpers
@@ -188,7 +195,7 @@ extension ImmersiveView {
                                entityName: String) {
         if let pedestal = content.entities.first?.findEntity(named: entityName) {
             if let pumpkinAttachment = attachments.entity(for: "\(entityName)_attach") {
-                pumpkinAttachment.position = [0.05, 0.25, 0.11]
+                pumpkinAttachment.position = Positions.attachmentPosition
                 pedestal.addChild(pumpkinAttachment)
             }
         }
