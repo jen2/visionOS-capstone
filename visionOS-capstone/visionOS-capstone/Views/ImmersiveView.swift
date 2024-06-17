@@ -67,6 +67,10 @@ struct ImmersiveView: View {
                     from: "Immersive.usda",
                     in: realityKitContentBundle
                 )
+
+                // Smoke effect
+                smoke = content.entities.first?.findEntity(named: "SmokeEmitter")
+                smoke?.components.set(OpacityComponent(opacity: 0.0))
             }
         } update: { content, attachments in
             // Ghost animation
@@ -218,11 +222,14 @@ extension ImmersiveView {
         TapGesture()
           .targetedToAnyEntity()
           .onEnded { value in
+              // Show smoke
+              smoke?.components.set(OpacityComponent(opacity: 1.0))
+
+              // Trigger sound effect
               guard let audio else { return }
               if let audioPlaybackControl = ghostWhisper?.prepareAudio(audio) {
                   audioPlaybackControl.play()
               }
-
           }
       }
 }
