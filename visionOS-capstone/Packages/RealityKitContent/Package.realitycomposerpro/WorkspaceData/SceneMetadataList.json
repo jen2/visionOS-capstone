@@ -3,8 +3,7 @@
     "objectMetadataList" : [
       [
         "0A9B4653-B11E-4D6A-850E-C6FCB621626C",
-        "Root",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -21,7 +20,8 @@
       },
       [
         "0A9B4653-B11E-4D6A-850E-C6FCB621626C",
-        "Root"
+        "Root",
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,
@@ -73,7 +73,8 @@
       [
         "E362E4EA-7D41-476B-B867-28D6B10BD0E5",
         "Root",
-        "black_pumpkin"
+        "black_pumpkin",
+        "cute_ghost"
       ],
       {
         "isExpanded" : true,
@@ -82,7 +83,7 @@
       [
         "E362E4EA-7D41-476B-B867-28D6B10BD0E5",
         "Root",
-        "blue_wonky_pumpkin"
+        "black_pumpkin"
       ],
       {
         "isExpanded" : true,
@@ -93,6 +94,15 @@
         "Root",
         "blue_wonky_pumpkin",
         "Geometry"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "E362E4EA-7D41-476B-B867-28D6B10BD0E5",
+        "Root",
+        "blue_wonky_pumpkin"
       ],
       {
         "isExpanded" : true,

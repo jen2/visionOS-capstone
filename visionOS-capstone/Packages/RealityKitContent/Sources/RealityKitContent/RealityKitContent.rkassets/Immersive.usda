@@ -7,7 +7,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["big_bumpy_pumpkin", "big_orange_pumpkin", "black_pumpkin", "orange_pumpkin_with_stem", "small_white_pumpkin", "colorful_gourd", "blue_wonky_pumpkin", "pedestal_1", "pedestal_2", "pedestal_3", "pedestal_4", "pedestal_5", "pedestal_6", "pedestal_7", "GlossyBlackWoodPlank", "MaplePlywood", "cute_ghost"]
+    reorder nameChildren = ["big_bumpy_pumpkin", "big_orange_pumpkin", "black_pumpkin", "orange_pumpkin_with_stem", "small_white_pumpkin", "colorful_gourd", "blue_wonky_pumpkin", "pedestal_1", "pedestal_2", "pedestal_3", "pedestal_4", "pedestal_5", "pedestal_6", "pedestal_7", "GlossyBlackWoodPlank", "MaplePlywood", "spooky_sound", "SpatialAudio"]
     rel material:binding = None (
         bindMaterialAs = "weakerThanDescendants"
     )
@@ -195,6 +195,7 @@ def Xform "Root"
             references = @cute-ghost.usdz@
         )
         {
+            reorder nameChildren = ["SpatialAudio", "Materials", "Meshes", "HierarchicalFade"]
             quatf xformOp:orient = (1, 0, 0, 0)
             float3 xformOp:scale = (0.005, 0.005, 0.005)
             float3 xformOp:translate = (-0.8514998, -1.287, -0.7988143)
@@ -203,7 +204,44 @@ def Xform "Root"
             def RealityKitComponent "HierarchicalFade"
             {
                 uniform token info:id = "RealityKit.HierarchicalFade"
-                float opacity = 0.4
+                float opacity = 0.39763758
+            }
+
+            def Xform "SpatialAudio"
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (200, 200, 200)
+                float3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def RealityKitComponent "SpatialAudio"
+                {
+                    uniform token info:id = "RealityKit.SpatialAudio"
+                }
+            }
+
+            def RealityKitComponent "InputTarget"
+            {
+                uniform token info:id = "RealityKit.InputTarget"
+            }
+
+            def RealityKitComponent "Collider"
+            {
+                uint group = 1
+                uniform token info:id = "RealityKit.Collider"
+                uint mask = 4294967295
+                token type = "Default"
+
+                def RealityKitStruct "Shape"
+                {
+                    float3 extent = (36.46807, 40.92286, 36.468063)
+                    token shapeType = "Box"
+
+                    def RealityKitStruct "pose"
+                    {
+                        float3 position = (0, 20.569065, 0.000002861023)
+                    }
+                }
             }
         }
     }
@@ -449,6 +487,11 @@ def Xform "Root"
             bool enableIBLShadow = 1
             bool enableMeshShadow = 1
             uniform token info:id = "RealityKit.GroundingShadow"
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
         }
     }
 
@@ -1071,6 +1114,11 @@ def Xform "Root"
         {
             float2 ui:nodegraph:node:size = (158.5, 235)
         }
+    }
+
+    def RealityKitAudioFile "spooky_sound"
+    {
+        uniform asset file = @spooky.wav@
     }
 }
 

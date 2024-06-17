@@ -12,6 +12,10 @@ import RealityKitContent
 struct ImmersiveView: View {
     @State private var ghostEntity: Entity?
 
+    @State private var smoke: Entity?
+    @State private var ghostWhisper: Entity?
+    @State private var audio: AudioFileResource?
+
     var body: some View {
         RealityView { content, attachments in
             // Initial RealityKit content
@@ -55,6 +59,14 @@ struct ImmersiveView: View {
                                   attachments: attachments,
                                   entityName: "pedestal_\(pumpkin.pedestalNumber)")
                 }
+
+                // Audio
+                ghostWhisper = content.entities.first?.findEntity(named: "SpatialAudio")
+                audio = try? await AudioFileResource(
+                    named: "/Root/spooky_sound",
+                    from: "Immersive.usda",
+                    in: realityKitContentBundle
+                )
             }
         } update: { content, attachments in
             // Ghost animation
@@ -147,6 +159,7 @@ struct ImmersiveView: View {
                 .glassBackgroundEffect()
             }
         }
+        .gesture(tapGesture)
     }
 }
 
@@ -200,6 +213,18 @@ extension ImmersiveView {
             }
         }
     }
+
+    private var tapGesture: some Gesture {
+        TapGesture()
+          .targetedToAnyEntity()
+          .onEnded { value in
+              guard let audio else { return }
+              if let audioPlaybackControl = ghostWhisper?.prepareAudio(audio) {
+                  audioPlaybackControl.play()
+              }
+
+          }
+      }
 }
 
 #Preview {
