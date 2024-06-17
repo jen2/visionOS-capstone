@@ -61,15 +61,15 @@ struct ImmersiveView: View {
                 }
 
                 // Audio
-                ghostWhisper = content.entities.first?.findEntity(named: "SpatialAudio")
+                ghostWhisper = content.entities.first?.findEntity(named: Constants.audioEntityName)
                 audio = try? await AudioFileResource(
-                    named: "/Root/spooky_sound",
-                    from: "Immersive.usda",
+                    named: Constants.audioPath,
+                    from: Constants.sceneName,
                     in: realityKitContentBundle
                 )
 
                 // Smoke effect
-                smoke = content.entities.first?.findEntity(named: "SmokeEmitter")
+                smoke = content.entities.first?.findEntity(named: Constants.particleEmitterName)
                 smoke?.components.set(OpacityComponent(opacity: 0.0))
             }
         } update: { content, attachments in
@@ -171,7 +171,11 @@ struct ImmersiveView: View {
 extension ImmersiveView {
     private enum Constants {
         static let immersiveViewEntityName = "Immersive"
+        static let audioEntityName = "SpatialAudio"
+        static let audioPath = "/Root/spooky_sound"
         static let ghostEntityName = "cute_ghost"
+        static let sceneName = "Immersive.usda"
+        static let particleEmitterName = "SmokeEmitter"
         static let sunlightResourceName = "Sunlight"
         static let sunlightIntensity: Float = 3.5
         static let orbitAnimationDuration = 3.0
@@ -186,12 +190,13 @@ extension ImmersiveView {
 
     private enum Positions {
         static let attachmentPosition: SIMD3<Float> = [0.05, 0.25, 0.11]
+        static let ghostTranslation: SIMD3<Float> = [0.05, 0.5, -0.05]
     }
 
     // MARK: Helpers
     private func animateGhost(with ghostEntity: Entity) {
         var transform = ghostEntity.transform
-        transform.translation = SIMD3<Float>(x: 0.05, y: 0.5, z: -0.05)
+        transform.translation = Positions.ghostTranslation
 
         let orbit = OrbitAnimation(duration: Constants.orbitAnimationDuration,
                                    axis: SIMD3<Float>(x: .zero, y: 1.0, z: .zero),
