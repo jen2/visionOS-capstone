@@ -488,11 +488,6 @@ def Xform "Root"
             bool enableMeshShadow = 1
             uniform token info:id = "RealityKit.GroundingShadow"
         }
-
-        def RealityKitComponent "InputTarget"
-        {
-            uniform token info:id = "RealityKit.InputTarget"
-        }
     }
 
     def Cylinder "pedestal_1" (
