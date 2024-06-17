@@ -11,7 +11,6 @@ import RealityKitContent
 
 struct ImmersiveView: View {
     @State private var ghostEntity: Entity?
-
     @State private var smoke: Entity?
     @State private var ghostWhisper: Entity?
     @State private var audio: AudioFileResource?
